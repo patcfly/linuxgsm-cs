@@ -9,18 +9,21 @@ services:
       - 27015:27015
 
   beszel-agent:
-    image: "henrygd/beszel-agent"
-    container_name: "beszel-agent"
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
     restart: unless-stopped
     network_mode: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./beszel_agent_data:/var/lib/beszel-agent
       # monitor other disks / partitions by mounting a folder in /extra-filesystems
       - /mnt/disk/.beszel:/extra-filesystems/sda3:ro
-
     environment:
       LISTEN: 45876
-      KEY: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKAfKleKjrnxFaLUB8dDqzuccaJ05VBd6HqszeOg8WMb"
+      KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKAfKleKjrnxFaLUB8dDqzuccaJ05VBd6HqszeOg8WMb'
+      TOKEN: a7a736a9-0e60-4033-be4d-2a3349c018dd
+      HUB_URL: https://b.220nyc.com
+
 
 
 volumes:
