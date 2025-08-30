@@ -6,9 +6,8 @@ services:
     volumes:
       - ${DOCKERSTORAGEDIR}/linuxgsm-cs:/data
     ports:
-      - 27015:27015
-    networks:
-      - host
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
 
 
   beszel-agent:
