@@ -7,6 +7,9 @@ services:
       - ${DOCKERSTORAGEDIR}/linuxgsm-cs:/data
     ports:
       - 27015:27015
+    networks:
+      - host
+
 
   beszel-agent:
     image: henrygd/beszel-agent
